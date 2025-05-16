@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+
+
+actor Администратор as admin
+actor Пользователь as user
+
+skinparam usecase {
+BackgroundColor DarkSeaGreen
+}
+
+(Авторизоваться как пользователь) as authUser
+(Найти картину по критериям) as find
+(Просмотреть избранные картины) as watchFav
+(Просмотреть текущие выставки) as watch
+(Добавить картину в избранное) as like
+(Удалить картину из избранного) as dislike
+
+(Изменить название/описание выставки) as switch
+(Авторизоваться как администратор) as authAdmin
+(Просмотреть текущие выставки) as watch2
+
+
+user -- authUser
+admin -- authAdmin
+authUser <.. find: extend
+authUser <.. watch: extend
+authUser <.. watchFav: extend
+watch <.. like: extend
+watch <.. dislike: extend
+
+authAdmin <.. switch: extend
+authAdmin <.. find: extend
+authAdmin <.. watch2: extend
+
+
+@enduml
